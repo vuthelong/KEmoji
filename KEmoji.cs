@@ -13,7 +13,7 @@ namespace Kingfisher.KEmoji
     {
         #region Field
 
-        public const string DataAssetPath = "Assets/ThirdParty/KEmoji/KEmojiData.asset";
+        public const string DataAssetPath = "Assets/ThirdParty/KingfisherTools/KEmoji/KEmojiData.asset";
 
         private const string Version = "1.1.0";
 
