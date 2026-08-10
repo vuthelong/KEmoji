@@ -56,16 +56,14 @@ namespace Kingfisher.KEmoji
 
         public static bool PluginDisabled { get => EditorPrefsCached.GetBool(PluginDisabledKey, false); set => EditorPrefsCached.SetBool(PluginDisabledKey, value); }
 
+        public static string DataPath => KEmoji.DataAssetPath;
+
         #endregion
 
         #region Method
 
-        // Discovered by reflection from the K-Setting window's Delete data button.
-        public static string DataPath => KEmoji.DataAssetPath;
-
         public static void DeleteData() => KEmoji.DeleteData();
 
-        // Discovered by reflection from the K-Setting window's Open button.
         public static void OpenTool() => KEmojiWindow.Open();
 
         #endregion

@@ -43,7 +43,7 @@ namespace Kingfisher.KEmoji.Libs
 
         public static string CombinePath(this string path, string name) => path + PathSeparator + name;
 
-        public static string GetParentPath(this string path) => path.LastIndexOf(PathSeparator) is var i && i > 0 ? path.Substring(0, i) : path;
+        public static string GetParentPath(this string path) => path.LastIndexOf(PathSeparator) is var index && index > 0 ? path.Substring(0, index) : path;
 
         public static bool IsInAssetsFolder(this string path) => !string.IsNullOrEmpty(path) && path.NormalizeSlashes().StartsWith(AssetsFolderPrefix, StringComparison.OrdinalIgnoreCase);
 
