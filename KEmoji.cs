@@ -15,7 +15,7 @@ namespace Kingfisher.KEmoji
 
         public const string DataAssetPath = "Assets/ThirdParty/KingfisherTools/KEmoji/KEmojiData.asset";
 
-        private const string Version = "1.1.0";
+        private const string Version = "1.0.1";
 
         private const string LogFormat = "K-Emoji: {0}";
         private const string GeneratedFormat = "generated {0} - {1} sprites in {2} px cells.";
