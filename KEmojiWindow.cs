@@ -29,10 +29,14 @@ namespace Kingfisher.KEmoji
         private const string SummaryFormat = "{0} sprites - {1} px cells";
         private const string OutsideAssetsWarning = "K-Emoji: pick a path inside the project's Assets folder.";
         private const string DisabledMessage = "K-Emoji is turned off in Tools > KTools Setting.";
-        private const string MissingTextMeshProMessage = "TextMeshPro is not installed, so no sprite asset can be written. Install com.unity.ugui, or turn the sprite asset off in Tools > KTools Setting.";
+        private const string MissingTextMeshProMessage = "TextMeshPro is not installed, so no sprite asset can be written. Install com.unity.ugui, or turn the sprite asset off in the Atlas section.";
         private const string EmptyListMessage = "No sprites yet - drop some below.";
         private const string DropAreaMessage = "Drop sprites or textures here";
         private const string ScriptToggleTooltip = "Generate the constants script when the atlas is generated";
+        private const string SpriteAssetToggleLabel = "TextMeshPro sprite asset";
+        private const string SpriteAssetToggleTooltip = "Write a TextMeshPro sprite asset when the atlas is generated";
+        private const string TexturePackerJsonToggleLabel = "TexturePacker JSON";
+        private const string TexturePackerJsonToggleTooltip = "Write a TexturePacker JSON beside the atlas when the atlas is generated";
 
         private const float MinWindowWidth = 520f;
         private const float MinWindowHeight = 380f;
@@ -69,6 +73,7 @@ namespace Kingfisher.KEmoji
         private const float NoticeHeight = 38f;
         private const float MinListHeight = 60f;
         private const int ScriptRowCount = 3;
+        private const int AtlasRowCount = 2;
         private const float ScriptToggleWidth = 16f;
         private const float LabelColumnWidth = 74f;
         private const float ButtonGap = 6f;
@@ -122,6 +127,8 @@ namespace Kingfisher.KEmoji
         private static readonly GUIContent AtlasSectionContent = new(AtlasSectionTitle);
         private static readonly GUIContent ScriptSectionContent = new(ScriptSectionTitle);
         private static readonly GUIContent ScriptToggleContent = new(string.Empty, ScriptToggleTooltip);
+        private static readonly GUIContent SpriteAssetToggleContent = new(SpriteAssetToggleLabel, SpriteAssetToggleTooltip);
+        private static readonly GUIContent TexturePackerJsonToggleContent = new(TexturePackerJsonToggleLabel, TexturePackerJsonToggleTooltip);
         private static readonly GUIContent SummaryContent = new();
 
         private static GUIStyle _sectionStyle;
@@ -172,7 +179,7 @@ namespace Kingfisher.KEmoji
 
         private static float ScriptRowsHeight => SectionTopSpacing + SectionHeaderHeight + SectionHeaderGap + (KEmojiMenu.ConstantsScriptEnabled ? RowHeight * ScriptRowCount : 0f);
 
-        private static float AtlasPanelHeight => ContentTopSpacing + SectionHeaderHeight + SectionHeaderGap + RowHeight + ScriptRowsHeight + AtlasPanelBottomSpacing;
+        private static float AtlasPanelHeight => ContentTopSpacing + SectionHeaderHeight + SectionHeaderGap + RowHeight * AtlasRowCount + ScriptRowsHeight + AtlasPanelBottomSpacing;
 
         private static float NoticesHeight
         {
@@ -441,6 +448,10 @@ namespace Kingfisher.KEmoji
 
             DrawAtlasRow(GetRowRect(panelRect, y));
 
+            y += RowHeight;
+
+            DrawOutputRow(GetRowRect(panelRect, y));
+
             y += RowHeight + SectionTopSpacing;
 
             DrawScriptSectionHeader(panelRect, y);
@@ -448,6 +459,16 @@ namespace Kingfisher.KEmoji
             if (!KEmojiMenu.ConstantsScriptEnabled) return;
 
             DrawScriptRows(panelRect, y + SectionHeaderHeight + SectionHeaderGap);
+        }
+
+        private static void DrawOutputRow(Rect rect)
+        {
+            var columnWidth = (rect.width - ColumnGap) * .5f;
+            var spriteAssetRect = new Rect(rect.x, rect.y, columnWidth, rect.height);
+            var texturePackerJsonRect = new Rect(spriteAssetRect.xMax + ColumnGap, rect.y, columnWidth, rect.height);
+
+            KEmojiMenu.SpriteAssetEnabled = EditorGUI.ToggleLeft(spriteAssetRect, SpriteAssetToggleContent, KEmojiMenu.SpriteAssetEnabled);
+            KEmojiMenu.TexturePackerJsonEnabled = EditorGUI.ToggleLeft(texturePackerJsonRect, TexturePackerJsonToggleContent, KEmojiMenu.TexturePackerJsonEnabled);
         }
 
         private static void DrawScriptSectionHeader(Rect panelRect, float y)

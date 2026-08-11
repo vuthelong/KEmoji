@@ -22,9 +22,11 @@ gives it a tab in the combined settings window.
 - **Preview** builds the atlas in memory and shows it without writing anything
 - Optional TexturePacker JSON beside the atlas, for tooling that expects it
 
-Cell size, which outputs to write and how the atlas imports are settings, and
-live in **Tools > KTools Setting > KEmoji**. The sprite list, the atlas path and
-the constants script path are per project and live in `.KData`.
+Which outputs to write - the sprite asset, the constants script and the
+TexturePacker JSON - are toggled in the K-Emoji window itself, beside the paths
+they write to. Cell size and how the atlas imports are settings, and live in
+**Tools > KTools Setting > KEmoji**. The sprite list, the atlas path and the
+constants script path are per project and live in `.KData`.
 
 Everything is editor-only - the assembly is `Editor`-platform only, so nothing
 here is compiled into player builds.
