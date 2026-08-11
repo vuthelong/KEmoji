@@ -40,17 +40,17 @@ namespace Kingfisher.KEmoji
 
         #region Property
 
-        public static bool SpriteAssetEnabled { get => EditorPrefsCached.GetBool(SpriteAssetEnabledKey, true); set => EditorPrefsCached.SetBool(SpriteAssetEnabledKey, value); }
+        public static bool SpriteAssetEnabled { get => EditorPrefsCached.GetBool(SpriteAssetEnabledKey, false); set => EditorPrefsCached.SetBool(SpriteAssetEnabledKey, value); }
 
-        public static bool ConstantsScriptEnabled { get => EditorPrefsCached.GetBool(ConstantsScriptEnabledKey, true); set => EditorPrefsCached.SetBool(ConstantsScriptEnabledKey, value); }
+        public static bool ConstantsScriptEnabled { get => EditorPrefsCached.GetBool(ConstantsScriptEnabledKey, false); set => EditorPrefsCached.SetBool(ConstantsScriptEnabledKey, value); }
 
         public static bool TexturePackerJsonEnabled { get => EditorPrefsCached.GetBool(TexturePackerJsonEnabledKey, false); set => EditorPrefsCached.SetBool(TexturePackerJsonEnabledKey, value); }
 
-        public static bool PreserveMetricsEnabled { get => EditorPrefsCached.GetBool(PreserveMetricsEnabledKey, true); set => EditorPrefsCached.SetBool(PreserveMetricsEnabledKey, value); }
+        public static bool PreserveMetricsEnabled { get => EditorPrefsCached.GetBool(PreserveMetricsEnabledKey, false); set => EditorPrefsCached.SetBool(PreserveMetricsEnabledKey, value); }
 
-        public static bool PointFilterEnabled { get => EditorPrefsCached.GetBool(PointFilterEnabledKey, true); set => EditorPrefsCached.SetBool(PointFilterEnabledKey, value); }
+        public static bool PointFilterEnabled { get => EditorPrefsCached.GetBool(PointFilterEnabledKey, false); set => EditorPrefsCached.SetBool(PointFilterEnabledKey, value); }
 
-        public static bool UncompressedEnabled { get => EditorPrefsCached.GetBool(UncompressedEnabledKey, true); set => EditorPrefsCached.SetBool(UncompressedEnabledKey, value); }
+        public static bool UncompressedEnabled { get => EditorPrefsCached.GetBool(UncompressedEnabledKey, false); set => EditorPrefsCached.SetBool(UncompressedEnabledKey, value); }
 
         public static float CellSize { get => EditorPrefsCached.GetFloat(CellSizeKey, DefaultCellSize); set => EditorPrefsCached.SetFloat(CellSizeKey, value); }
 
