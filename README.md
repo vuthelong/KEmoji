@@ -56,14 +56,14 @@ The generated script holds one constant per sprite, named from the sprite in
 
 ## Install
 
-K-Emoji ships on its own, with K-Setting bundled in. Package Manager > **+** >
-**Install package from git URL...**, then paste:
+Package Manager > **+** > **Install package from git URL...**, then paste. The
+package carries all six K-Tools, K-Emoji among them:
 
 ```
-https://github.com/vuthelong/kTool.git?path=/Assets/ThirdParty/.UPM/com.kingfisher.kemoji
+https://github.com/vuthelong/kTool.git?path=/Assets/ThirdParty/.UPM/com.kingfisher.ktools#1.3.0
 ```
 
-Or download `KEmoji-<version>.unitypackage` from
+For K-Emoji on its own, download `KEmoji-1.3.0.unitypackage` from
 [Releases](https://github.com/vuthelong/kTool/releases).
 
 ## License
