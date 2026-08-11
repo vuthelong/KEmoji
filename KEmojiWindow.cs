@@ -32,6 +32,7 @@ namespace Kingfisher.KEmoji
         private const string MissingTextMeshProMessage = "TextMeshPro is not installed, so no sprite asset can be written. Install com.unity.ugui, or turn the sprite asset off in Tools > KTools Setting.";
         private const string EmptyListMessage = "No sprites yet - drop some below.";
         private const string DropAreaMessage = "Drop sprites or textures here";
+        private const string ScriptToggleTooltip = "Generate the constants script when the atlas is generated";
 
         private const float MinWindowWidth = 520f;
         private const float MinWindowHeight = 380f;
@@ -68,6 +69,7 @@ namespace Kingfisher.KEmoji
         private const float NoticeHeight = 38f;
         private const float MinListHeight = 60f;
         private const int ScriptRowCount = 3;
+        private const float ScriptToggleWidth = 16f;
         private const float LabelColumnWidth = 74f;
         private const float ButtonGap = 6f;
         private const float BrowseButtonWidth = 62f;
@@ -119,6 +121,7 @@ namespace Kingfisher.KEmoji
         private static readonly GUIContent SpritesSectionContent = new(SpritesSectionTitle);
         private static readonly GUIContent AtlasSectionContent = new(AtlasSectionTitle);
         private static readonly GUIContent ScriptSectionContent = new(ScriptSectionTitle);
+        private static readonly GUIContent ScriptToggleContent = new(string.Empty, ScriptToggleTooltip);
         private static readonly GUIContent SummaryContent = new();
 
         private static GUIStyle _sectionStyle;
@@ -167,7 +170,7 @@ namespace Kingfisher.KEmoji
 
         private static float ScrollbarWidth => GUI.skin.verticalScrollbar.fixedWidth + GUI.skin.verticalScrollbar.margin.left;
 
-        private static float ScriptRowsHeight => KEmojiMenu.ConstantsScriptEnabled ? SectionTopSpacing + SectionHeaderHeight + SectionHeaderGap + RowHeight * ScriptRowCount : 0f;
+        private static float ScriptRowsHeight => SectionTopSpacing + SectionHeaderHeight + SectionHeaderGap + (KEmojiMenu.ConstantsScriptEnabled ? RowHeight * ScriptRowCount : 0f);
 
         private static float AtlasPanelHeight => ContentTopSpacing + SectionHeaderHeight + SectionHeaderGap + RowHeight + ScriptRowsHeight + AtlasPanelBottomSpacing;
 
@@ -438,13 +441,21 @@ namespace Kingfisher.KEmoji
 
             DrawAtlasRow(GetRowRect(panelRect, y));
 
-            if (!KEmojiMenu.ConstantsScriptEnabled) return;
-
             y += RowHeight + SectionTopSpacing;
 
-            DrawSectionHeader(panelRect, y, ScriptSectionContent, 0f);
+            DrawScriptSectionHeader(panelRect, y);
+
+            if (!KEmojiMenu.ConstantsScriptEnabled) return;
 
             DrawScriptRows(panelRect, y + SectionHeaderHeight + SectionHeaderGap);
+        }
+
+        private static void DrawScriptSectionHeader(Rect panelRect, float y)
+        {
+            var headerRect = DrawSectionHeader(panelRect, y, ScriptSectionContent, ScriptToggleWidth + SectionRuleGap);
+            var toggleRect = new Rect(headerRect.xMax - ScriptToggleWidth, headerRect.y, ScriptToggleWidth, headerRect.height);
+
+            KEmojiMenu.ConstantsScriptEnabled = EditorGUI.Toggle(toggleRect, ScriptToggleContent, KEmojiMenu.ConstantsScriptEnabled);
         }
 
         private static void DrawAtlasRow(Rect rect)
