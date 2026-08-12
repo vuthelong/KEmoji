@@ -62,16 +62,15 @@ Two channels. Take whichever suits - the package is the same either way.
 ### Package Manager (git URL)
 
 Package Manager > **+** > **Install package from git URL...**, then paste
-K-Emoji and K-Setting alongside it:
+K-Emoji, and K-Setting with it if you want the combined settings window:
 
 ```
-https://github.com/vuthelong/KSetting.git
-https://github.com/vuthelong/KEmoji.git
+https://github.com/vuthelong/KSetting.git#1.0.0
+https://github.com/vuthelong/KEmoji.git#1.0.0
 ```
 
-A bare URL tracks the default branch; add a `#<tag>` suffix - `#1.0.0` - to
-pin a released version. Unity keeps packages read-only in
-`Library/PackageCache`.
+Drop the `#1.0.0` suffix to track the default branch instead of a tag. Unity
+keeps packages read-only in `Library/PackageCache`.
 
 ### Clone or submodule
 
