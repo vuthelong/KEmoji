@@ -57,37 +57,61 @@ The generated script holds one constant per sprite, named from the sprite in
 
 ## Install
 
-Two channels, both on this repo's
-[Releases](https://github.com/vuthelong/KEmoji/releases) page. Pick one - see
-[Install one way only](#install-one-way-only).
+Two channels. Take whichever suits - the package is the same either way.
 
 ### Package Manager (git URL)
 
-Package Manager > **+** > **Install package from git URL...**, then paste:
+Package Manager > **+** > **Install package from git URL...**, then paste
+K-Emoji and K-Setting alongside it:
 
 ```
-https://github.com/vuthelong/KEmoji.git#1.0.0
+https://github.com/vuthelong/KSetting.git
+https://github.com/vuthelong/KEmoji.git
 ```
 
-Drop the `#1.0.0` suffix to track the default branch instead of a release tag.
-Unity keeps the package read-only in `Library/PackageCache`.
+A bare URL tracks the default branch; add a `#<tag>` suffix - `#1.0.0` - to
+pin a released version. Unity keeps packages read-only in
+`Library/PackageCache`.
 
-### .unitypackage
+### Clone or submodule
 
-Download `KEmoji-1.0.0.unitypackage` from the release and drop it into your
-project, or **Assets > Import Package > Custom Package...**. It unpacks to
-`Assets/ThirdParty/KingfisherTools/`, where you can read and edit the source.
+To keep the source editable instead, put the repository into
+`Assets/ThirdParty/KingfisherTools/`:
 
-## Install one way only
+```
+cd Assets/ThirdParty/KingfisherTools
+git clone https://github.com/vuthelong/KSetting.git
+git clone https://github.com/vuthelong/KEmoji.git
+```
 
-Do not combine the two channels, and do not install two single-tool packages
-side by side. Each one ships its own copy of K-Setting, and Unity rejects
-duplicate assembly names with
-`Assembly with name 'Kingfisher.KSetting' already exists`.
+Or add them as submodules, which is what the
+[kTool](https://github.com/vuthelong/kTool) development project does:
 
-Only one Kingfisher package can be installed at a time. Pick the tool you want -
-each one brings the same combined settings window with it.
+```
+git submodule add https://github.com/vuthelong/KEmoji.git Assets/ThirdParty/KingfisherTools/KEmoji
+```
+
+Check out a tag to pin a version:
+
+```
+git -C Assets/ThirdParty/KingfisherTools/KEmoji checkout 1.0.0
+```
+
+Keep one copy per project, whichever channel you use - Unity rejects a second
+with `Assembly with name 'Kingfisher.KEmoji' already exists`.
+
+## Settings
+
+**Tools > Kingfisher > KEmoji > Settings** opens K-Emoji's own settings window.
+
+Install [K-Setting](https://github.com/vuthelong/KSetting) beside it and you get
+**Tools > KTools Setting** instead - one window that every installed Kingfisher
+tool folds its settings into. It finds the installed tools by reflection at load
+time, so there is nothing to wire up.
+
+K-Setting is optional. Without it, each tool keeps its own window.
 
 ## License
 
-MIT - see [LICENSE.md](../KingfisherTools/LICENSE.md).
+Proprietary - see [LICENSE.md](LICENSE.md). Licensed per purchase (Unity Asset
+Store or a direct agreement with Kingfisher); it is not open source.
