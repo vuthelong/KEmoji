@@ -4,9 +4,10 @@ Packs a list of sprites into one atlas and turns it into everything a
 TextMeshPro `<sprite name=...>` tag needs - the atlas texture, the sprite asset
 and its material, and a C# script of name constants - from a single window.
 
-Part of [Kingfisher K-Tools](https://github.com/vuthelong/kTool). It ships
-inside the K-Tools bundle together with the shared K-Setting backend, which
-gives it a tab in the combined settings window.
+One of the Kingfisher K-Tools, built on the shared
+[K-Setting](https://github.com/vuthelong/KSetting) backend. This package ships
+with its own copy, so installing K-Emoji on its own still gives you a tab in
+the combined settings window.
 
 ## Features
 
@@ -56,15 +57,36 @@ The generated script holds one constant per sprite, named from the sprite in
 
 ## Install
 
-Package Manager > **+** > **Install package from git URL...**, then paste. The
-package carries all six K-Tools, K-Emoji among them:
+Two channels, both on this repo's
+[Releases](https://github.com/vuthelong/KEmoji/releases) page. Pick one - see
+[Install one way only](#install-one-way-only).
+
+### Package Manager (git URL)
+
+Package Manager > **+** > **Install package from git URL...**, then paste:
 
 ```
-https://github.com/vuthelong/kTool.git?path=/Assets/ThirdParty/.UPM/com.kingfisher.ktools#1.0.0
+https://github.com/vuthelong/KEmoji.git#1.0.0
 ```
 
-For K-Emoji on its own, download `KEmoji-1.0.0.unitypackage` from
-[Releases](https://github.com/vuthelong/kTool/releases).
+Drop the `#1.0.0` suffix to track the default branch instead of a release tag.
+Unity keeps the package read-only in `Library/PackageCache`.
+
+### .unitypackage
+
+Download `KEmoji-1.0.0.unitypackage` from the release and drop it into your
+project, or **Assets > Import Package > Custom Package...**. It unpacks to
+`Assets/ThirdParty/KingfisherTools/`, where you can read and edit the source.
+
+## Install one way only
+
+Do not combine the two channels, and do not install two single-tool packages
+side by side. Each one ships its own copy of K-Setting, and Unity rejects
+duplicate assembly names with
+`Assembly with name 'Kingfisher.KSetting' already exists`.
+
+Only one Kingfisher package can be installed at a time. Pick the tool you want -
+each one brings the same combined settings window with it.
 
 ## License
 
