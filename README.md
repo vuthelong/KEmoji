@@ -60,10 +60,10 @@ Package Manager > **+** > **Install package from git URL...**, then paste. The
 package carries all six K-Tools, K-Emoji among them:
 
 ```
-https://github.com/vuthelong/kTool.git?path=/Assets/ThirdParty/.UPM/com.kingfisher.ktools#1.3.0
+https://github.com/vuthelong/kTool.git?path=/Assets/ThirdParty/.UPM/com.kingfisher.ktools#1.0.0
 ```
 
-For K-Emoji on its own, download `KEmoji-1.3.0.unitypackage` from
+For K-Emoji on its own, download `KEmoji-1.0.0.unitypackage` from
 [Releases](https://github.com/vuthelong/kTool/releases).
 
 ## License
