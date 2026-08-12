@@ -7,8 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.0.0] - 2026-08-10
+## [1.0.0] - 2026-08-13
 
 ### Added
 
-- First public release.
+- Drop sprites or a sliced texture onto the window and they become rows -
+  reorder them by the grip, rename them, remove them.
+- Per-sprite scale, so a sprite can fill less than its cell, and a per-sprite
+  hexadecimal code point for tags that address a sprite by unicode.
+- One click writes the atlas PNG, slices it, writes a `TMP_SpriteAsset` beside
+  it with a `TextMeshPro/Sprite` material, and regenerates the constants
+  script.
+- Regenerating keeps what you tuned by hand: glyph metrics, glyph rects and
+  scales already in the sprite asset are carried over by sprite name, and slice
+  ids are reused so existing references survive.
+- **Preview** builds the atlas in memory and shows it without writing anything.
+- Optional TexturePacker JSON beside the atlas, for tooling that expects it.
+- The constants script is optional; which outputs to write are toggled in the
+  K-Emoji window beside the paths they write to.
+- Per-tool settings window for when K-Setting is not installed; with it, the
+  settings fold into **Tools > KTools Setting** instead.
+- Installs as a UPM package from its git URL, or as a plain folder under
+  `Assets/`.
+- Editor-only: the assembly is `Editor`-platform only, so nothing is compiled
+  into player builds.
