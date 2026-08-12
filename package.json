@@ -1,0 +1,22 @@
+{
+  "name": "com.kingfisher.kemoji",
+  "version": "1.0.0",
+  "displayName": "K-Emoji",
+  "description": "Builds a sprite atlas from a list of sprites, with a TextMeshPro sprite asset and a generated constants script to go with it. Drag sprites in, give each one a unicode code point, and generate. Pairs with K-Setting, the shared settings backend. Editor-only: nothing is compiled into player builds.",
+  "unity": "2022.3",
+  "author": {
+    "name": "Kingfisher",
+    "url": "https://github.com/vuthelong"
+  },
+  "keywords": [
+    "editor",
+    "emoji",
+    "sprite",
+    "atlas",
+    "textmeshpro"
+  ],
+  "documentationUrl": "https://github.com/vuthelong/KEmoji/blob/main/README.md",
+  "changelogUrl": "https://github.com/vuthelong/KEmoji/blob/main/CHANGELOG.md",
+  "licensesUrl": "https://github.com/vuthelong/KEmoji/blob/main/LICENSE.md",
+  "hideInEditor": false
+}
