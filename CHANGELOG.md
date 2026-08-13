@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.4] - 2026-08-13
+
+### Changed
+
+- The standalone Settings window (used when K-Setting isn't installed) now
+  matches K-Setting's own UI - sections, sliders, colour pickers, and choice
+  groups all render and work exactly as they do inside K-Setting, plus the
+  same Delete data/Reset/Reveal footer.
+
 ## [1.0.3] - 2026-08-13
 
 ### Changed
