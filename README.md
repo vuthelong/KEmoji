@@ -72,6 +72,11 @@ https://github.com/vuthelong/KEmoji.git#1.0.1
 Drop the `#1.0.1` suffix to track the default branch instead of a tag. Unity
 keeps packages read-only in `Library/PackageCache`.
 
+Package Manager's own **Update** button only refreshes a tracked branch - a
+tag is a fixed point, so Update has nothing new to fetch while pinned to one.
+To move to a newer tag, repeat this step with the new `#<version>`; drop the
+suffix once instead and Update will pick up new commits from then on.
+
 ### Clone or submodule
 
 To keep the source editable instead, put the repository into
