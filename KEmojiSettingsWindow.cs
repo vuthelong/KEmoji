@@ -12,7 +12,7 @@ namespace Kingfisher.KEmoji
     {
         #region Field
 
-        private const string MenuPath = "Tools/Kingfisher/KEmoji/Settings";
+        private const string MenuPath = "Tools/Kingfisher/KEmoji Setting";
         private const string WindowTitle = "KEmoji";
 
         private const string KSettingsWindowTypeName = "Kingfisher.KSetting.KSettingsWindow, Kingfisher.KSetting";
