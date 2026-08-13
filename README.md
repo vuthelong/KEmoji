@@ -65,17 +65,25 @@ Package Manager > **+** > **Install package from git URL...**, then paste
 K-Emoji, and K-Setting with it if you want the combined settings window:
 
 ```
+https://github.com/vuthelong/KSetting.git
+https://github.com/vuthelong/KEmoji.git
+```
+
+This tracks the default branch, so Package Manager's **Update** button pulls
+new commits as they land. Unity keeps packages read-only in
+`Library/PackageCache`.
+
+#### Pin a version (optional)
+
+Append `#<version>` to install a specific tag instead of tracking the branch:
+
+```
 https://github.com/vuthelong/KSetting.git#1.0.1
 https://github.com/vuthelong/KEmoji.git#1.0.1
 ```
 
-Drop the `#1.0.1` suffix to track the default branch instead of a tag. Unity
-keeps packages read-only in `Library/PackageCache`.
-
-Package Manager's own **Update** button only refreshes a tracked branch - a
-tag is a fixed point, so Update has nothing new to fetch while pinned to one.
-To move to a newer tag, repeat this step with the new `#<version>`; drop the
-suffix once instead and Update will pick up new commits from then on.
+A tag is a fixed point, so Update has nothing new to fetch while pinned to
+one - move to a newer tag by repeating this step with the new `#<version>`.
 
 ### Clone or submodule
 
