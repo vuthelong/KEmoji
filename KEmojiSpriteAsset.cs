@@ -52,6 +52,7 @@ namespace Kingfisher.KEmoji
 
         private static readonly FieldInfo SpriteSheetField = SpriteAssetType?.GetField(SpriteSheetFieldName);
         private static readonly FieldInfo MaterialField = SpriteAssetType?.GetField(MaterialFieldName);
+        private static readonly PropertyInfo MaterialProperty = MaterialField == null ? SpriteAssetType?.GetProperty(MaterialFieldName) : null;
 
         private static readonly PropertyInfo CharacterTableProperty = SpriteAssetType?.GetProperty(CharacterTablePropertyName);
         private static readonly PropertyInfo GlyphTableProperty = SpriteAssetType?.GetProperty(GlyphTablePropertyName);
@@ -69,7 +70,7 @@ namespace Kingfisher.KEmoji
 
         public static bool IsAvailable => HasAssetMembers && HasCharacterMembers;
 
-        private static bool HasAssetMembers => SpriteAssetType != null && SpriteGlyphType != null && SpriteCharacterType != null && SpriteSheetField != null && MaterialField != null && CharacterTableProperty != null && GlyphTableProperty != null;
+        private static bool HasAssetMembers => SpriteAssetType != null && SpriteGlyphType != null && SpriteCharacterType != null && SpriteSheetField != null && (MaterialField != null || MaterialProperty != null) && CharacterTableProperty != null && GlyphTableProperty != null;
 
         private static bool HasCharacterMembers => UnicodeProperty != null && GlyphIndexProperty != null && CharacterScaleProperty != null && CharacterNameProperty != null;
 
@@ -103,7 +104,7 @@ namespace Kingfisher.KEmoji
 
             material.SetTexture(MainTexPropertyId, texture);
 
-            MaterialField.SetValue(spriteAsset, material);
+            SetMaterial(spriteAsset, material);
 
             if (!Fill(spriteAsset, atlas, entries)) return null;
 
@@ -197,6 +198,18 @@ namespace Kingfisher.KEmoji
             AssetDatabase.AddObjectToAsset(created, spriteAsset);
 
             return created;
+        }
+
+        private static void SetMaterial(object spriteAsset, Material material)
+        {
+            if (MaterialField != null)
+            {
+                MaterialField.SetValue(spriteAsset, material);
+
+                return;
+            }
+
+            MaterialProperty.SetValue(spriteAsset, material);
         }
 
         #endregion

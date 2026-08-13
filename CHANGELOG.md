@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- The sprite asset toggle no longer warns that TextMeshPro is missing on
+  installs where `TMP_Asset.material` is a property instead of a field (the
+  shape shipped with `com.unity.ugui`-bundled TextMeshPro) - both shapes are
+  recognized now.
+
 ## [1.0.0] - 2026-08-13
 
 ### Added
