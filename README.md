@@ -57,7 +57,7 @@ The generated script holds one constant per sprite, named from the sprite in
 
 ## Install
 
-Three channels. Take whichever suits - the package is the same either way.
+Two channels. Take whichever suits - the package is the same either way.
 
 ### Package Manager (git URL)
 
@@ -72,15 +72,14 @@ This tracks the default branch, so Package Manager's **Update** button pulls
 new commits as they land. Unity keeps packages read-only in
 `Library/PackageCache`.
 
-#### Combined settings window (optional)
-
-Paste [K-Setting](https://github.com/vuthelong/KSetting)'s URL too, and
-K-Emoji folds its settings into **Tools > KTools Setting** instead of opening
-its own window:
-
-```
-https://github.com/vuthelong/KSetting.git
-```
+> [!TIP]
+> Install [K-Setting](https://github.com/vuthelong/KSetting) alongside it to
+> fold K-Emoji's settings into **Tools > KTools Setting** instead of opening
+> its own window:
+>
+> ```
+> https://github.com/vuthelong/KSetting.git
+> ```
 
 #### Pin a version (optional)
 
@@ -101,30 +100,6 @@ Download the `.unitypackage` from the
 [latest release](https://github.com/vuthelong/KEmoji/releases/latest) and
 import it via **Assets > Import Package > Custom Package**. This is a
 point-in-time snapshot, not a tracked install - re-download it to update.
-
-### Clone or submodule
-
-To keep the source editable instead, put the repository into
-`Assets/ThirdParty/KingfisherTools/`:
-
-```
-cd Assets/ThirdParty/KingfisherTools
-git clone https://github.com/vuthelong/KSetting.git
-git clone https://github.com/vuthelong/KEmoji.git
-```
-
-Or add them as submodules, which is what the
-[kTool](https://github.com/vuthelong/kTool) development project does:
-
-```
-git submodule add https://github.com/vuthelong/KEmoji.git Assets/ThirdParty/KingfisherTools/KEmoji
-```
-
-Check out a tag to pin a version:
-
-```
-git -C Assets/ThirdParty/KingfisherTools/KEmoji checkout 1.0.2
-```
 
 Keep one copy per project, whichever channel you use - Unity rejects a second
 with `Assembly with name 'Kingfisher.KEmoji' already exists`.
