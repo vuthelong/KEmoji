@@ -79,7 +79,7 @@ Append `#<version>` to install a specific tag instead of tracking the branch:
 
 ```
 https://github.com/vuthelong/KSetting.git#1.0.1
-https://github.com/vuthelong/KEmoji.git#1.0.1
+https://github.com/vuthelong/KEmoji.git#1.0.2
 ```
 
 A tag is a fixed point, so Update has nothing new to fetch while pinned to
@@ -106,7 +106,7 @@ git submodule add https://github.com/vuthelong/KEmoji.git Assets/ThirdParty/King
 Check out a tag to pin a version:
 
 ```
-git -C Assets/ThirdParty/KingfisherTools/KEmoji checkout 1.0.1
+git -C Assets/ThirdParty/KingfisherTools/KEmoji checkout 1.0.2
 ```
 
 Keep one copy per project, whichever channel you use - Unity rejects a second

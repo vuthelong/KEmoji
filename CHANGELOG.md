@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.2] - 2026-08-13
+
+### Changed
+
+- Install instructions now default to tracking the branch, so Package
+  Manager's own Update button works after install; pinning to a specific
+  tag moved to its own optional step.
+
 ## [1.0.1] - 2026-08-13
 
 ### Fixed
