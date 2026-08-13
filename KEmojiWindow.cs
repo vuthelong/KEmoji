@@ -276,6 +276,8 @@ namespace Kingfisher.KEmoji
 
             EditorGUI.DrawRect(listRect, PanelBackground);
 
+            HandleDrop(listRect);
+
             if (Data.entries.Count == 0)
             {
                 GUI.Label(listRect, EmptyListContent, _noticeStyle);
