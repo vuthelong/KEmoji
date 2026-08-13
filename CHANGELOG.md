@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.3] - 2026-08-13
+
+### Changed
+
+- Dropped the `Clone or submodule` install channel from the README - Package
+  Manager (git URL) and the `.unitypackage` on each release cover it, and
+  installing K-Setting alongside K-Emoji is now called out as a tip instead
+  of its own subheading.
+- Moved the main window's menu item from the top-level `Tools/KEmoji` into
+  `Tools/Kingfisher/KEmoji`, and flattened its Settings entry from a nested
+  submenu to `Tools/Kingfisher/KEmoji Setting` - both now match every other
+  tool's menu path.
+
 ## [1.0.2] - 2026-08-13
 
 ### Changed
