@@ -57,15 +57,14 @@ The generated script holds one constant per sprite, named from the sprite in
 
 ## Install
 
-Two channels. Take whichever suits - the package is the same either way.
+Three channels. Take whichever suits - the package is the same either way.
 
 ### Package Manager (git URL)
 
 Package Manager > **+** > **Install package from git URL...**, then paste
-K-Emoji, and K-Setting with it if you want the combined settings window:
+K-Emoji's URL:
 
 ```
-https://github.com/vuthelong/KSetting.git
 https://github.com/vuthelong/KEmoji.git
 ```
 
@@ -73,9 +72,20 @@ This tracks the default branch, so Package Manager's **Update** button pulls
 new commits as they land. Unity keeps packages read-only in
 `Library/PackageCache`.
 
+#### Combined settings window (optional)
+
+Paste [K-Setting](https://github.com/vuthelong/KSetting)'s URL too, and
+K-Emoji folds its settings into **Tools > KTools Setting** instead of opening
+its own window:
+
+```
+https://github.com/vuthelong/KSetting.git
+```
+
 #### Pin a version (optional)
 
-Append `#<version>` to install a specific tag instead of tracking the branch:
+Append `#<version>` to either URL above to install a specific tag instead of
+tracking the branch:
 
 ```
 https://github.com/vuthelong/KSetting.git#1.0.1
@@ -84,6 +94,13 @@ https://github.com/vuthelong/KEmoji.git#1.0.2
 
 A tag is a fixed point, so Update has nothing new to fetch while pinned to
 one - move to a newer tag by repeating this step with the new `#<version>`.
+
+### `.unitypackage`
+
+Download the `.unitypackage` from the
+[latest release](https://github.com/vuthelong/KEmoji/releases/latest) and
+import it via **Assets > Import Package > Custom Package**. This is a
+point-in-time snapshot, not a tracked install - re-download it to update.
 
 ### Clone or submodule
 
