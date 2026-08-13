@@ -29,33 +29,47 @@ namespace Kingfisher.KEmoji
 
             var texture = new Texture2D(result.Width, result.Height, TextureFormat.RGBA32, false) { filterMode = FilterMode.Point };
 
-            ClearTransparent(texture);
-
-            for (var i = 0; i < entries.Count; i++)
+            try
             {
-                var entry = entries[i];
-                var cell = BuildCell(entry, cellSize);
+                ClearTransparent(texture);
 
-                var x = i % columns * cellSize;
-                var y = result.Height - (i / columns + 1) * cellSize;
-
-                texture.SetPixels(x, y, cellSize, cellSize, cell.GetPixels());
-
-                Object.DestroyImmediate(cell);
-
-                result.Placements.Add(new Placement
+                for (var i = 0; i < entries.Count; i++)
                 {
-                    Name = string.IsNullOrEmpty(entry.spriteName) ? entry.sprite.name : entry.spriteName,
-                    X = x,
-                    Y = y,
-                });
+                    var entry = entries[i];
+                    var cell = BuildCell(entry, cellSize);
+
+                    try
+                    {
+                        var x = i % columns * cellSize;
+                        var y = result.Height - (i / columns + 1) * cellSize;
+
+                        texture.SetPixels(x, y, cellSize, cellSize, cell.GetPixels());
+
+                        result.Placements.Add(new Placement
+                        {
+                            Name = string.IsNullOrEmpty(entry.spriteName) ? entry.sprite.name : entry.spriteName,
+                            X = x,
+                            Y = y,
+                        });
+                    }
+                    finally
+                    {
+                        Object.DestroyImmediate(cell);
+                    }
+                }
+
+                texture.Apply();
+
+                result.Texture = texture;
+
+                return result;
             }
+            catch
+            {
+                Object.DestroyImmediate(texture);
 
-            texture.Apply();
-
-            result.Texture = texture;
-
-            return result;
+                throw;
+            }
         }
 
         private static void ClearTransparent(Texture2D texture) => texture.SetPixels32(new Color32[texture.width * texture.height]);
@@ -67,17 +81,23 @@ namespace Kingfisher.KEmoji
         private static Texture2D BuildCell(KEmojiData.Entry entry, int cellSize)
         {
             var source = ReadSprite(entry.sprite);
+            Texture2D scaled = null;
 
-            var width = Mathf.Max(MinTextureSize, Mathf.RoundToInt(source.width * entry.sizeRatio));
-            var height = Mathf.Max(MinTextureSize, Mathf.RoundToInt(source.height * entry.sizeRatio));
+            try
+            {
+                var width = Mathf.Max(MinTextureSize, Mathf.RoundToInt(source.width * entry.sizeRatio));
+                var height = Mathf.Max(MinTextureSize, Mathf.RoundToInt(source.height * entry.sizeRatio));
 
-            var scaled = Scale(source, width, height);
-            var cell = Compose(scaled, cellSize);
+                scaled = Scale(source, width, height);
 
-            Object.DestroyImmediate(source);
-            Object.DestroyImmediate(scaled);
+                return Compose(scaled, cellSize);
+            }
+            finally
+            {
+                Object.DestroyImmediate(source);
 
-            return cell;
+                if (scaled) Object.DestroyImmediate(scaled);
+            }
         }
 
         private static Texture2D ReadSprite(Sprite sprite)
@@ -85,21 +105,33 @@ namespace Kingfisher.KEmoji
             var spriteRect = sprite.textureRect;
             var renderTexture = RenderTexture.GetTemporary(sprite.texture.width, sprite.texture.height, NoDepthBuffer, RenderTextureFormat.ARGB32, RenderTextureReadWrite.Linear);
             var previousActive = RenderTexture.active;
+            Texture2D readable = null;
 
-            Graphics.Blit(sprite.texture, renderTexture);
+            try
+            {
+                Graphics.Blit(sprite.texture, renderTexture);
 
-            RenderTexture.active = renderTexture;
+                RenderTexture.active = renderTexture;
 
-            var readable = new Texture2D((int)spriteRect.width, (int)spriteRect.height, TextureFormat.RGBA32, false) { wrapMode = TextureWrapMode.Clamp };
+                readable = new Texture2D((int)spriteRect.width, (int)spriteRect.height, TextureFormat.RGBA32, false) { wrapMode = TextureWrapMode.Clamp };
 
-            readable.ReadPixels(spriteRect, 0, 0);
-            readable.Apply();
+                readable.ReadPixels(spriteRect, 0, 0);
+                readable.Apply();
 
-            RenderTexture.active = previousActive;
+                return readable;
+            }
+            catch
+            {
+                if (readable) Object.DestroyImmediate(readable);
 
-            RenderTexture.ReleaseTemporary(renderTexture);
+                throw;
+            }
+            finally
+            {
+                RenderTexture.active = previousActive;
 
-            return readable;
+                RenderTexture.ReleaseTemporary(renderTexture);
+            }
         }
 
         private static Texture2D Compose(Texture2D scaled, int cellSize)

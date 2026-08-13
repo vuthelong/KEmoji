@@ -222,6 +222,8 @@ namespace Kingfisher.KEmoji
 
             if (!KEmojiMenu.PreserveMetricsEnabled) return preserved;
 
+            var glyphsByIndex = BuildGlyphIndex(glyphs);
+
             for (var i = 0; i < characters.Count; i++)
             {
                 var character = characters[i];
@@ -232,7 +234,7 @@ namespace Kingfisher.KEmoji
 
                 if (preserved.ContainsKey(name)) continue;
 
-                if (FindGlyph(glyphs, (uint)GlyphIndexProperty.GetValue(character)) is not { } glyph) continue;
+                if (!glyphsByIndex.TryGetValue((uint)GlyphIndexProperty.GetValue(character), out var glyph)) continue;
 
                 preserved.Add(name, new PreservedSprite
                 {
@@ -247,18 +249,20 @@ namespace Kingfisher.KEmoji
             return preserved;
         }
 
-        private static Glyph FindGlyph(IList glyphs, uint glyphIndex)
+        private static Dictionary<uint, Glyph> BuildGlyphIndex(IList glyphs)
         {
+            var glyphsByIndex = new Dictionary<uint, Glyph>();
+
             for (var i = 0; i < glyphs.Count; i++)
             {
                 if (glyphs[i] is not Glyph glyph) continue;
 
-                if (glyph.index != glyphIndex) continue;
+                if (glyphsByIndex.ContainsKey(glyph.index)) continue;
 
-                return glyph;
+                glyphsByIndex.Add(glyph.index, glyph);
             }
 
-            return null;
+            return glyphsByIndex;
         }
 
         private static GlyphRect Remap(GlyphRect preservedRect, GlyphRect cellRect, int cellSize)

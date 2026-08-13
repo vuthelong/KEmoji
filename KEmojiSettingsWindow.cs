@@ -28,7 +28,11 @@ namespace Kingfisher.KEmoji
 
         private const BindingFlags PropertyBindingFlags = BindingFlags.Public | BindingFlags.Static;
 
+        private static readonly Type KSettingsWindowType = Type.GetType(KSettingsWindowTypeName);
+        private static readonly MethodInfo OpenMethod = KSettingsWindowType?.GetMethod(OpenMethodName, PropertyBindingFlags);
+
         private static PropertyInfo[] _toggleProperties;
+        private static string[] _toggleLabels;
         private static PropertyInfo _disabledProperty;
 
         #endregion
@@ -50,7 +54,7 @@ namespace Kingfisher.KEmoji
 
             for (var i = 0; i < _toggleProperties.Length; i++)
             {
-                DrawToggle(_toggleProperties[i], Prettify(_toggleProperties[i].Name));
+                DrawToggle(_toggleProperties[i], _toggleLabels[i]);
             }
         }
 
@@ -61,9 +65,9 @@ namespace Kingfisher.KEmoji
         [MenuItem(MenuPath)]
         public static void Open()
         {
-            if (Type.GetType(KSettingsWindowTypeName)?.GetMethod(OpenMethodName, PropertyBindingFlags) is { } openMethod)
+            if (OpenMethod != null)
             {
-                openMethod.Invoke(null, null);
+                OpenMethod.Invoke(null, null);
 
                 return;
             }
@@ -99,6 +103,12 @@ namespace Kingfisher.KEmoji
             }
 
             _toggleProperties = toggles.ToArray();
+            _toggleLabels = new string[_toggleProperties.Length];
+
+            for (var i = 0; i < _toggleProperties.Length; i++)
+            {
+                _toggleLabels[i] = Prettify(_toggleProperties[i].Name);
+            }
         }
 
         private static void DrawToggle(PropertyInfo property, string label, bool invert = false)
