@@ -17,7 +17,7 @@ namespace Kingfisher.KEmoji
 
         private const string MenuPath = "Tools/Kingfisher/KEmoji Setting";
         private const string WindowTitle = "KEmoji";
-        private const int MenuPriority = 20;
+        private const int MenuPriority = 911;
 
         private const string KSettingsWindowTypeName = "Kingfisher.KSetting.KSettingsWindow, Kingfisher.KSetting";
         private const string OpenMethodName = "Open";

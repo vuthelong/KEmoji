@@ -13,7 +13,7 @@ namespace Kingfisher.KEmoji
 
         private const string MenuPath = "Tools/Kingfisher/KEmoji";
         private const string WindowTitle = "K-Emoji";
-        private const int MenuPriority = 1;
+        private const int MenuPriority = 911;
 
         private const string SpritesSectionTitle = "Sprites";
         private const string AtlasSectionTitle = "Atlas";
