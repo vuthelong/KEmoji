@@ -22,6 +22,7 @@ namespace Kingfisher.KEmoji
         private const string KSettingsWindowTypeName = "Kingfisher.KSetting.KSettingsWindow, Kingfisher.KSetting";
         private const string OpenMethodName = "Open";
         private const string RemoveMenuItemMethodName = "RemoveMenuItem";
+        private const string MenuItemExistsMethodName = "MenuItemExists";
         private const string RebuildAllMenusMethodName = "RebuildAllMenus";
 
         private const BindingFlags InternalStaticMemberFlags = BindingFlags.NonPublic | BindingFlags.Static;
@@ -1056,8 +1057,15 @@ namespace Kingfisher.KEmoji
 
             EditorApplication.delayCall += () =>
             {
-                typeof(Menu).GetMethod(RemoveMenuItemMethodName, InternalStaticMemberFlags)?.Invoke(null, new object[] { MenuPath });
-                typeof(Menu).GetMethod(RebuildAllMenusMethodName, InternalStaticMemberFlags)?.Invoke(null, null);
+                var menuType = typeof(Menu);
+
+                menuType.GetMethod(RemoveMenuItemMethodName, InternalStaticMemberFlags)?.Invoke(null, new object[] { MenuPath });
+
+                var hasMenuItem = menuType.GetMethod(MenuItemExistsMethodName, InternalStaticMemberFlags)?.Invoke(null, new object[] { MenuPath });
+                if (hasMenuItem is false) return;
+
+                menuType.GetMethod(RebuildAllMenusMethodName, InternalStaticMemberFlags)?.Invoke(null, null);
+                InternalEditorUtility.ReloadWindowLayoutMenu();
             };
         }
 
