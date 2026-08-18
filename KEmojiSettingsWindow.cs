@@ -21,6 +21,10 @@ namespace Kingfisher.KEmoji
 
         private const string KSettingsWindowTypeName = "Kingfisher.KSetting.KSettingsWindow, Kingfisher.KSetting";
         private const string OpenMethodName = "Open";
+        private const string RemoveMenuItemMethodName = "RemoveMenuItem";
+        private const string RebuildAllMenusMethodName = "RebuildAllMenus";
+
+        private const BindingFlags InternalStaticMemberFlags = BindingFlags.NonPublic | BindingFlags.Static;
 
         private const string DisabledPropertyName = "PluginDisabled";
         private const string LayoutFieldName = "SettingsLayout";
@@ -1043,6 +1047,18 @@ namespace Kingfisher.KEmoji
             var window = GetWindow<KEmojiSettingsWindow>(utility: false, title: WindowTitle, focus: true);
 
             window.minSize = new Vector2(MinWindowWidth, MinWindowHeight);
+        }
+
+        [InitializeOnLoadMethod]
+        private static void HideMenuItemWhenKSettingInstalled()
+        {
+            if (Type.GetType(KSettingsWindowTypeName) == null) return;
+
+            EditorApplication.delayCall += () =>
+            {
+                typeof(Menu).GetMethod(RemoveMenuItemMethodName, InternalStaticMemberFlags)?.Invoke(null, new object[] { MenuPath });
+                typeof(Menu).GetMethod(RebuildAllMenusMethodName, InternalStaticMemberFlags)?.Invoke(null, null);
+            };
         }
 
         private static void Apply(SettingsSetting setting, bool isOn)
