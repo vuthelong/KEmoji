@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.6] - 2026-08-18
+
+### Changed
+
+- Moved the `Tools/Kingfisher/KEmoji` and `Tools/Kingfisher/KEmoji Setting`
+  menu items to priority 911, grouping the settings entry at the bottom of the
+  Tools menu alongside the other Kingfisher tools' settings items.
+
 ## [1.0.5] - 2026-08-18
 
 ### Changed
