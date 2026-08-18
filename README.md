@@ -87,7 +87,7 @@ Append `#<version>` to either URL above to install a specific tag instead of
 tracking the branch:
 
 ```
-https://github.com/vuthelong/KSetting.git#1.0.1
+https://github.com/vuthelong/KSetting.git#1.0.3
 https://github.com/vuthelong/KEmoji.git#1.0.6
 ```
 
