@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.7] - 2026-08-19
+
 ### Fixed
 
 - Hiding the `Tools/Kingfisher/KEmoji Setting` menu item no longer wipes
