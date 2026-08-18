@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.5] - 2026-08-18
+
+### Changed
+
+- The `Tools/Kingfisher/KEmoji Setting` menu item now disappears once
+  K-Setting is installed, instead of lingering and just redirecting into
+  K-Setting's own window.
+
 ## [1.0.4] - 2026-08-13
 
 ### Changed
