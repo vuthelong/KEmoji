@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Hiding the `Tools/Kingfisher/KEmoji Setting` menu item no longer wipes
+  Unity's `Window/Layouts` menu. The menu bar is now rebuilt only when
+  removing the item alone was not enough, and the layouts menu - which Unity
+  builds at runtime, so a full rebuild discards it - is restored afterwards.
+
 ## [1.0.6] - 2026-08-18
 
 ### Changed
