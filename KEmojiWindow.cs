@@ -11,7 +11,7 @@ namespace Kingfisher.KEmoji
     {
         #region Field
 
-        private const string MenuPath = "Tools/Kingfisher/KEmoji";
+        private const string MenuPath = "Tools/Kingfisher/K-Emoji/Open";
         private const string WindowTitle = "K-Emoji";
         private const int MenuPriority = 911;
 

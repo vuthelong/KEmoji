@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Moved the window and Settings menu items from `Tools/Kingfisher/KEmoji` and
+  `Tools/Kingfisher/KEmoji Setting` into a `Tools/Kingfisher/K-Emoji` submenu,
+  as `Open` and `Setting`.
+
 ## [1.0.7] - 2026-08-19
 
 ### Fixed
