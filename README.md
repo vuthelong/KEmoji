@@ -44,7 +44,7 @@ here is compiled into player builds.
 
 ## Use it
 
-1. **Tools > KEmoji**
+1. **Tools > Kingfisher > K-Emoji > Open**
 2. Drop sprites onto the drop area, or add empty rows with **+**
 3. Set the atlas path - anywhere inside `Assets/`, ending in `.png`
 4. Set the constants script path, namespace and class name, if you want the
@@ -106,7 +106,7 @@ with `Assembly with name 'Kingfisher.KEmoji' already exists`.
 
 ## Settings
 
-**Tools > Kingfisher > KEmoji > Settings** opens K-Emoji's own settings window.
+**Tools > Kingfisher > K-Emoji > Setting** opens K-Emoji's own settings window.
 
 Install [K-Setting](https://github.com/vuthelong/KSetting) beside it and you get
 **Tools > KTools Setting** instead - one window that every installed Kingfisher
