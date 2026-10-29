@@ -88,7 +88,7 @@ tracking the branch:
 
 ```
 https://github.com/vuthelong/KSetting.git#1.0.4
-https://github.com/vuthelong/KEmoji.git#1.0.7
+https://github.com/vuthelong/KEmoji.git#1.0.8
 ```
 
 A tag is a fixed point, so Update has nothing new to fetch while pinned to
