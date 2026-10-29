@@ -13,6 +13,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `Tools/Kingfisher/KEmoji Setting` into a `Tools/Kingfisher/K-Emoji` submenu,
   as `Open` and `Setting`.
 
+### Fixed
+
+- Generating an atlas now re-slices the texture's sprites. The 2D Sprite
+  data provider was looked up under the wrong `SpriteRect` type name, so the
+  slicer fell back to a path that left the old sprite rects in place, and a
+  TextMeshPro `Update Sprite Asset` then pulled those stale rects back into
+  the sprite asset.
+
 ## [1.0.7] - 2026-08-19
 
 ### Fixed

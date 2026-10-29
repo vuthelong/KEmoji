@@ -16,7 +16,7 @@ namespace Kingfisher.KEmoji
 
         private const string FactoriesTypeName = "UnityEditor.U2D.Sprites.SpriteDataProviderFactories";
         private const string ProviderTypeName = "UnityEditor.U2D.Sprites.ISpriteEditorDataProvider";
-        private const string SpriteRectTypeName = "UnityEditor.U2D.Sprites.SpriteRect";
+        private const string SpriteRectTypeName = "UnityEditor.SpriteRect";
 
         private const string InitMethodName = "Init";
         private const string GetProviderMethodName = "GetSpriteEditorDataProviderFromObject";
